@@ -1,0 +1,17 @@
+{% extends 'main/main.html' %}
+{% block heading %}-- Add a Page{% endblock %}
+{% block content %}
+<h2> Add a new page in {{category.name}} </h2>
+<form method=post action=/rango/{{category.slug}}/addPage/>
+	{% csrf_token %}
+	{% for hidden in form.hidden_fields %}
+		{{hidden}}
+	{% endfor %}
+	{% for field in form.visible_fields %}
+		{{field.errors}}
+		{{field.help_text}}
+		{{field}}<br>
+	{% endfor %}
+	<input type=submit value="Create Page">
+</form>
+{% endblock %}

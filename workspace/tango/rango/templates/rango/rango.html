@@ -1,0 +1,20 @@
+{% extends "main/main.html" %}
+{% block heading %} -- Rango{% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+	<h2> Rango says ... hello {{user.username}}! </h2>
+{% else %}
+	<h2> Rango says ... hello world! </h2>
+{% endif %}
+{% if categories %}
+	<ul>
+	{% for category in categories %}
+		<li><a 	href=/rango/category/{{category.slug}}/>{{category.name}}</a></li>
+	{% endfor %}
+	</ul>
+{% else %}
+	<p><strong>There are no categories present.</strong></p>
+{% endif %}
+	<br>
+	<a href=/rango/addCategory/>Add a New Category</a><br><br>
+{% endblock %}

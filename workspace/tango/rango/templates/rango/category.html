@@ -1,0 +1,20 @@
+{% extends "main/main.html" %}
+{% block heading %} -- List Pages{% endblock %}
+{% block content %}
+{% if category %}
+	<h2> {{category.name}} </h2>
+	{% if pages %}
+		<ul>
+			{% for page in pages %}
+				<li><a href={{page.url}}>{{page.title}}</a></li>
+			{% endfor %}
+		</ul>
+	{% else %}
+		<p><strong>No pages currently in category.</strong></p>
+	{% endif %}
+	<br><br>
+	<a href="/rango/{{category.slug}}/addPage/">Add a New Page</a><br><br>
+{% else %}
+	<p>The specified category &quot;{{categoryName}}&quot; does not exist.</p>
+{% endif %}
+{% endblock %}
